@@ -13,6 +13,7 @@
 		A74071692BA94A3D0061A3CB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A74071682BA94A3D0061A3CB /* Base */; };
 		A740716B2BA94A3E0061A3CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A740716A2BA94A3E0061A3CB /* Assets.xcassets */; };
 		A740716E2BA94A3E0061A3CB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A740716D2BA94A3E0061A3CB /* Base */; };
+		A74071762BAAB3390061A3CB /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74071752BAAB3390061A3CB /* TodoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A740716A2BA94A3E0061A3CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A740716D2BA94A3E0061A3CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A740716F2BA94A3E0061A3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A74071752BAAB3390061A3CB /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +61,11 @@
 				A74071612BA94A3D0061A3CB /* AppDelegate.swift */,
 				A74071632BA94A3D0061A3CB /* SceneDelegate.swift */,
 				A74071652BA94A3D0061A3CB /* ViewController.swift */,
-				A74071672BA94A3D0061A3CB /* Main.storyboard */,
 				A740716A2BA94A3E0061A3CB /* Assets.xcassets */,
+				A74071672BA94A3D0061A3CB /* Main.storyboard */,
 				A740716C2BA94A3E0061A3CB /* LaunchScreen.storyboard */,
 				A740716F2BA94A3E0061A3CB /* Info.plist */,
+				A74071752BAAB3390061A3CB /* TodoCell.swift */,
 			);
 			path = MyTodoList;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				A74071662BA94A3D0061A3CB /* ViewController.swift in Sources */,
 				A74071622BA94A3D0061A3CB /* AppDelegate.swift in Sources */,
 				A74071642BA94A3D0061A3CB /* SceneDelegate.swift in Sources */,
+				A74071762BAAB3390061A3CB /* TodoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
