@@ -11,13 +11,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var cellCount : [Todo] = []
     let TodoTable = UITableView()
+    var sectionHeader = Set<String>()
     
     struct Todo {
         var Title : String
         var isCompleted : Bool = false
-        
+        var writeDay : String
+        var dateFormatter = DateFormatter()
         init(Title : String) {
             self.Title = Title
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            self.writeDay = self.dateFormatter.string(from: Date())
         }
     }
     
@@ -26,6 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         tableCreate()
         setUIButton()
+        
     }
     
     // MARK: button
@@ -37,6 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         button.frame = CGRect(x: 294, y: 59, width: 83, height: 35)
         self.view.addSubview(button)
+        
     }
     
     //버튼 누르면 alert실행
@@ -50,6 +56,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if willDo?.isEmpty != true {
                 let new = Todo(Title: willDo!)
                 self.cellCount.append(new)
+                self.sectionHeader.insert(new.writeDay)
+                
                 self.TodoTable.reloadData()
             }else {
                 let failAlert = UIAlertController(title: nil, message: "할일이 없으신가요?", preferredStyle: .alert)
@@ -60,7 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         alert.addAction(cancel)
         alert.addAction(ok)
-        
+        // Index 0 Textfield
         alert.addTextField() {(tf) in
             tf.placeholder = "하아아아알 이이이이일"
         }
@@ -76,6 +84,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         TodoTable.dataSource = self
         TodoTable.register(TodoCell.self, forCellReuseIdentifier: TodoCell.cellId)
         self.view.addSubview(TodoTable)
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        print(self.sectionHeader)
+        return sectionHeader.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionHeader.sorted()[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,7 +112,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { if editingStyle == .delete {
         cellCount.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+    }
     } // 해당 indexPath
     // MARK: switch
 //    func setswitch() {
