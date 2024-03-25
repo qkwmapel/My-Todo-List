@@ -41,7 +41,7 @@ class TodoCell: UITableViewCell {
             TodoLbl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             TodoLbl.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            completeSwitch.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            completeSwitch.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             completeSwitch.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
         
