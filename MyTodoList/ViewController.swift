@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var cellCount : [Todo] = []
-    let TodoTable = UITableView()
+    var TodoTable = UITableView()
     var sectionHeader = Set<String>()
     
     struct Todo {
@@ -56,9 +56,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if willDo?.isEmpty != true {
                 let new = Todo(Title: willDo!)
                 self.cellCount.append(new)
-                self.sectionHeader.insert(new.writeDay)
                 
-                self.TodoTable.reloadData()
+                self.TodoTable.performBatchUpdates({
+                    if !self.sectionHeader.contains(new.writeDay){
+                        self.sectionHeader.insert(new.writeDay)
+                        self.TodoTable.insertSections(IndexSet(integer: self.sectionHeader.count - 1), with: .automatic)
+                    }
+                    self.TodoTable.insertRows(at: [IndexPath(row: self.cellCount.count - 1, section: self.sectionHeader.count - 1)], with: .automatic)})
             }else {
                 let failAlert = UIAlertController(title: nil, message: "할일이 없으신가요?", preferredStyle: .alert)
                 failAlert.addAction(cancel)
@@ -86,7 +90,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.view.addSubview(TodoTable)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        print(self.sectionHeader)
         return sectionHeader.count
     }
     
